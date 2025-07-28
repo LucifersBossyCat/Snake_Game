@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake Game 🍎</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-cotton">
+  <!-- Title Section -->
+  <header class="header">
+    <h1 class="game-title">
+      <span class="emoji">🍎</span>
+      SNAKEZZZZZ
+      <span class="emoji">🐍</span>
+    </h1>
+    <p class="subtitle">Powered by apples & chaos</p>
+  </header>
+
+  <!-- Floating Controls: Settings + High Score -->
+  <div class="floating-top">
+    <button id="settings-toggle">⚙️</button>
+    <div class="side-panel">
+      <h3>📈 High Score</h3>
+      <p id="high-score">0</p>
+    </div>
+  </div>
+
+  <!-- Game Area -->
+  <main class="game-wrapper">
+    <section class="game-container">
+      <!-- Game Board Grid -->
+      <div id="game-board"></div>
+
+      <!-- Controls and Score -->
+      <div class="info">
+        <div class="buttons">
+          <button id="start-btn">Start Game</button>
+          <button id="pause-btn">Pause</button>
+        </div>
+        <div class="info-bottom">
+          <span>Score: <span id="score">0</span></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-settings" class="close-btn">&times;</span>
+      <h2>⚙️ Game Settings</h2>
+
+      <div class="setting-group">
+        <label for="speed">Speed:</label>
+        <select id="speed">
+          <option value="300">Slow 🐢</option>
+          <option value="200" selected>Normal 🐍</option>
+          <option value="100">Fast 🐇</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty">
+          <option value="easy">Easy 🍃</option>
+          <option value="normal" selected>Normal 🍂</option>
+          <option value="hard">Hard 🌪️</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label for="theme">Theme:</label>
+        <select id="theme">
+          <option value="cotton" selected>Cotton Candy ☁️</option>
+          <option value="forest">Forest 🌲</option>
+          <option value="sky">Sky 💙</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    <!-- Game Over Modal -->
+<div id="game-over-modal" class="modal hidden">
+  <div class="modal-content game-over-popup">
+    <h2>💀 Game Over!</h2>
+    <p>Your final score: <span id="final-score">0</span></p>
+    <button id="play-again-btn">Play Again</button>
+    <button id="close-popup-btn">Close</button>
+
+  </div>
+</div>
+
+  <!-- JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>

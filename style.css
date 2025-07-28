@@ -1,0 +1,377 @@
+/* === Base Styling === */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Neue', cursive;
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Header === */
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  color: var(--panel-text);
+  text-shadow: 1px 1px 0 #fff, 2px 2px 5px #c5f2c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-title .emoji {
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--panel-text);
+  font-style: italic;
+  margin-top: -10px;
+}
+
+/* === Main Layout === */
+.game-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* === Game Container === */
+.game-container {
+  background: var(--panel-bg);
+  border: 6px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Game Board === */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(20, 20px);
+  gap: 2px;
+  background-color: var(--grid-bg);
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  background-color: var(--grid-bg);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.snake {
+  background-color: var(--snake-color);
+  border-radius: 50%;
+}
+
+.food::before {
+  content: '🍎';
+}
+.food {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Buttons & Info === */
+.buttons {
+  margin-bottom: 10px;
+}
+
+#start-btn, #pause-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#start-btn {
+  background-color: var(--button-start);
+}
+#start-btn:hover {
+  background-color: var(--button-start-hover);
+}
+#pause-btn {
+  background-color: var(--button-pause);
+}
+#pause-btn:hover {
+  background-color: var(--button-pause-hover);
+}
+
+.info-bottom {
+  font-size: 18px;
+}
+
+/* === Floating Settings Icon === */
+#settings-toggle {
+  background-color: var(--settings-bg);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#settings-toggle:hover {
+  background-color: var(--settings-hover);
+}
+
+.floating-top {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 100;
+  gap: 10px;
+}
+
+.floating-top button {
+  background-color: var(--settings-bg);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.floating-top button:hover {
+  background-color: var(--settings-hover);
+}
+
+/* === High Score Panel === */
+.side-panel {
+  background: var(--panel-bg);
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  min-width: 140px;
+  font-size: 0.95rem;
+  color: var(--panel-text);
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid var(--border-color);
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--panel-bg);
+  padding: 30px;
+  border-radius: 16px;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: var(--panel-text);
+  font-size: 1.6rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--panel-text);
+}
+.close-btn:hover {
+  color: #000;
+}
+
+.setting-group {
+  margin: 12px 0;
+}
+
+.setting-group label {
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.setting-group select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--settings-bg);
+  font-weight: bold;
+  color: var(--panel-text);
+  cursor: pointer;
+}
+.setting-group select:hover {
+  background-color: var(--settings-hover);
+}
+
+/* === Animations === */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* === THEME: Cotton Candy === */
+.theme-cotton {
+  --bg-color: #fff0fb;
+  --grid-bg: #fceaff;
+  --snake-color: #c23eb9;
+
+  --border-color: #ffb3ef;
+  --panel-bg: #fff0f8;
+  --panel-text: #b4008f;
+  --button-start: #ffa0d6;
+  --button-start-hover: #ff6fc3;
+  --button-pause: #d7aaff;
+  --button-pause-hover: #b76bff;
+  --settings-bg: #ffe6f8;
+  --settings-hover: #ffc1eb;
+}
+
+/* === THEME: Forest === */
+.theme-forest {
+  --bg-color: #e6fbe9;
+  --grid-bg: #d1f7d1;
+  --snake-color: #2e8b57;
+
+  --border-color: #4caf50;
+  --panel-bg: #ecffee;
+  --panel-text: #14532d;
+  --button-start: #a1dd70;
+  --button-start-hover: #7acc44;
+  --button-pause: #8fc6a1;
+  --button-pause-hover: #63a07c;
+  --settings-bg: #d0f0d6;
+  --settings-hover: #adeeb9;
+}
+
+/* === THEME: Sky === */
+.theme-sky {
+  --bg-color: #e9f7ff;
+  --grid-bg: #d6efff;
+  --snake-color: #3694e0;
+
+  --border-color: #6ec7f7;
+  --panel-bg: #e0f6ff;
+  --panel-text: #004b87;
+  --button-start: #69c9ff;
+  --button-start-hover: #3db5f5;
+  --button-pause: #a3dfff;
+  --button-pause-hover: #75cdf5;
+  --settings-bg: #e0f7ff;
+  --settings-hover: #c0eaff;
+}
+
+
+
+
+/* === Game Over Modal === */
+.game-over-popup h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.game-over-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#play-again-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  margin-top: 15px;
+}
+
+#close-popup-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #ddd;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+#close-popup-btn:hover {
+  background-color: #bbb;
+}
+
+
+/* === Themed Play Again Button + Modal === */
+.theme-cotton #play-again-btn {
+  background-color: #ffb3ec;
+  color: #4e2a3a;
+}
+.theme-cotton #play-again-btn:hover {
+  background-color: #ff8bd2;
+}
+
+.theme-forest #play-again-btn {
+  background-color: #7fdca4;
+  color: #204d37;
+}
+.theme-forest #play-again-btn:hover {
+  background-color: #52c186;
+}
+
+.theme-sky #play-again-btn {
+  background-color: #a3d8ff;
+  color: #1e3d58;
+}
+.theme-sky #play-again-btn:hover {
+  background-color: #76c1ff;
+}
